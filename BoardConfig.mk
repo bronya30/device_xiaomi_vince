@@ -54,6 +54,7 @@ TARGET_KERNEL_CONFIG := vince-perf_defconfig
 TARGET_KERNEL_CLANG_VERSION := cosmic
 TARGET_KERNEL_CLANG_PATH := $(abspath .)/prebuilts/clang/clang-$(TARGET_KERNEL_CLANG_VERSION)
 TARGET_CLANG_WITH_GNU_BINUTILS := true
+KERNEL_CC := CC="$(CCACHE_BIN) clang"
 
 # ANT
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
