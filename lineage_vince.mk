@@ -21,20 +21,26 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from vince device
 $(call inherit-product, device/xiaomi/vince/device.mk)
 
-# Inherit some common Octavi stuff.
-$(call inherit-product, vendor/octavi/config/common_full_phone.mk)
+# Inherit some common Alphadroid stuff.
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Include Octavi specific sepolicy
--include device/octavi/sepolicy/qcom/sepolicy.mk
+# Include Alphadroid specific sepolicy
+-include device/lineage/sepolicy/qcom/sepolicy.mk
 
-# Build Status
-OCTAVI_BUILD_TYPE := OFFICIAL
-OCTAVI_MAINTAINER := GhostMaster69-dev
+# Build Maintainer
+ALPHA_MAINTAINER := GhostMaster69-dev
 
-# Gapps
-ifneq ($(TARGET_WITH_MINI_GAPPS), false)
-USE_GAPPS := true
-WITH_GAPPS := true
+ifneq ($(TARGET_WITH_GAPPS), false)
+# Full Gapps
+WITH_GAPPS := 2
+
+# Google telephony
+TARGET_USE_GOOGLE_TELEPHONY := true
+
+# Google NGA
+TARGET_SUPPORTS_NEXT_GEN_ASSISTANT := true
+
+# Remove Gapps packages
 PRODUCT_PACKAGES += RemovePackages
 endif
 
@@ -43,7 +49,7 @@ PRODUCT_BRAND := xiaomi
 PRODUCT_DEVICE := vince
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := Redmi 5 Plus
-PRODUCT_NAME := octavi_vince
+PRODUCT_NAME := lineage_vince
 PRODUCT_SYSTEM_NAME := vince
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
