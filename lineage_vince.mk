@@ -24,25 +24,29 @@ $(call inherit-product, device/xiaomi/vince/device.mk)
 # Inherit some common Alphadroid stuff.
 $(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
-# Include Alphadroid specific sepolicy
+# Include Rising specific sepolicy
 -include device/lineage/sepolicy/qcom/sepolicy.mk
 
+# Chipset
+RISING_CHIPSET := "snapdragon 625"
+
 # Build Maintainer
-ALPHA_MAINTAINER := GhostMaster69-dev
+RISING_MAINTAINER := "ShenRn"
 
-ifneq ($(TARGET_WITH_GAPPS), false)
-# Full Gapps
-WITH_GAPPS := 2
+# vanilla 
+RISING_PACKAGE_TYPE := "VANILLA AOSP"
 
-# Google telephony
-TARGET_USE_GOOGLE_TELEPHONY := true
+# Aperture Camera
+TARGET_BUILD_APERTURE_CAMERA := false
 
-# Google NGA
-TARGET_SUPPORTS_NEXT_GEN_ASSISTANT := true
+# disable/enable blur support
+TARGET_ENABLE_BLUR := true
 
-# Remove Gapps packages
-PRODUCT_PACKAGES += RemovePackages
-endif
+# UDFPS ICONS/ANIMATIONS
+TARGET_HAS_UDFPS := true
+
+# Spoof build description/fingerprint as pixel device
+TARGET_USE_PIXEL_FINGERPRINT := true
 
 # Device identifier. This must come after all inclusions
 PRODUCT_BRAND := xiaomi
